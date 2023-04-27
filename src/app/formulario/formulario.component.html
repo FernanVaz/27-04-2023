@@ -1,0 +1,47 @@
+<h1>Lista de Pedidos</h1>
+ <table>
+    <tr>
+        <td>ID PEDIDO</td>
+        <td>ID CLIENTE </td>
+        <td>FORMA DE PAGO</td>
+        <td>DIRECCION DE ENTREGA</td>
+    </tr>
+    <tr *ngFor="let pedidos of pedidos">
+        <td>{{pedidos.idPedido}}</td>
+        <td>{{pedidos.idCliente}}</td>
+        <td>{{pedidos.formaPago}}</td>
+        <td>{{pedidos.direccionEntrega}}</td>
+    </tr>
+
+</table>
+<br><br><br>
+<table>
+  <tr>
+    <td>ID PEDIDO</td>
+    <td>ID PRODUCTO</td>
+    <td>CATIDAD</td>
+  </tr>
+  <tr *ngFor="let productos of productos">
+    <td>{{productos.idPedido}}</td>
+    <td>{{productos.idProducto}}</td>
+    <td>{{productos.cantidad}}</td>
+</tr>
+</table>
+<br><br><br>
+<form [formGroup]="pedidosFormulario" #Formformulario="ngForm" (ngSubmit)="agregar()">
+  <label for="marca">IDPEDIDO: </label>
+  <input type="number" formControlName="idPedido"><br>
+  <label for="color">ID CLIENTE </label>
+  <input type="number" formControlName="idCliente"><br>
+  <label for="velocidad">FORMA DE PAGO: </label>
+  <input type="string" formControlName="formaPago"><br>
+  <label for="platos">DIRECCION DE ENTREGA: </label>
+  <input type="string" formControlName="direccionEntrega"><br>
+  <br>
+  <button type="button" [routerLink]="['/detalle', pedidoAux.idPedido,]">Detalle</button>
+  <br>
+  <router-outlet></router-outlet>
+  <br><br>
+  <button type="submit" >AGREGAR PEDIDO</button>
+</form>
+
